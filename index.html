@@ -1,0 +1,1559 @@
+<!doctype html>
+<html lang="fa" dir="rtl" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مجتمع فرهنگی ورزشی آرتیمان</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./script.js">
+  <style>
+      body {
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #00115a 0%, #432363 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .wave-animation {
+            animation: wave 2s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .bounce-animation {
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translate(-50%, -100%); }
+            to { transform: translate(-50%, 0); }
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        .gallery-tab {
+            background: white;
+            color: #4b5563;
+            border: 2px solid #e5e7eb;
+        }
+
+        .gallery-tab:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .active-tab {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .gallery-item {
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .user-panel-tab {
+            background: white;
+            color: #6b7280;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .user-panel-tab:hover {
+            color: #667eea;
+        }
+
+        .user-panel-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            font-weight: 600;
+        }
+
+        .package-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .package-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .package-card.selected {
+            border: 3px solid #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .morabi{
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: auto;
+            
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full smooth-scroll"><!-- Header -->
+  <header class="hero-gradient text-white shadow-lg w-full">
+   <nav class="mx-auto px-6 py-4 max-w-7xl">
+    <div class="flex justify-between items-center">
+     <h1 id="site-title" class="text-2xl font-bold">مجتمع فرهنگی ورزشی آرتیمان</h1>
+     <div class="flex items-center space-x-reverse space-x-4">
+      <div class="hidden md:flex space-x-reverse space-x-6"><a href="#home" class="hover:text-blue-200 transition-colors">خانه</a> <a href="#services" class="hover:text-blue-200 transition-colors">خدمات</a> <a href="#schedule" class="hover:text-blue-200 transition-colors">سانس‌بندی</a> <a href="#gallery" class="hover:text-blue-200 transition-colors">گالری</a> <a href="#coaches" class="hover:text-blue-200 transition-colors">مربیان</a> <a href="#contact" class="hover:text-blue-200 transition-colors">تماس</a>
+      </div><button onclick="openLoginModal()" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold hover:bg-blue-50 transition-colors flex items-center space-x-reverse space-x-2"> <span>👤</span> <span>پنل کاربری</span> </button>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main class="w-full"><!-- Hero Section with Carousel -->
+   <section id="home" class="relative w-full overflow-hidden">
+    <div id="heroCarousel" class="flex transition-transform duration-700 ease-in-out"><!-- Slide 1 -->
+     <div class="min-w-full hero-gradient text-white py-20">
+      <div class="mx-auto px-6 text-center max-w-7xl">
+       <div class="text-6xl mb-6">
+        🏊‍♂️
+       </div>
+       <h2 class="text-5xl font-bold mb-6">استخر مدرن و استاندارد</h2>
+       <p class="text-xl mb-8 opacity-90">استخر 50 متری با آب گرم و سرد، سونا و جکوزی</p>
+       <div class="flex justify-center space-x-reverse space-x-4"><a href="#services" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors"> مشاهده خدمات </a> <button onclick="openLoginModal()" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors"> ورود به پنل کاربری </button>
+       </div>
+      </div>
+     </div><!-- Slide 2 -->
+     <div class="min-w-full bg-gradient-to-br from-green-500 to-emerald-600 text-white py-20">
+      <div class="mx-auto px-6 text-center max-w-7xl">
+       <div class="text-6xl mb-6">
+        ⚽
+       </div>
+       <h2 class="text-5xl font-bold mb-6">مدرسه فوتبال حرفه‌ای</h2>
+       <p class="text-xl mb-8 opacity-90">آموزش توسط مربیان باتجربه و دارای مدرک</p>
+       <div class="flex justify-center space-x-reverse space-x-4"><a href="#services" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-colors"> مشاهده خدمات </a> <button onclick="openLoginModal()" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors"> ورود به پنل کاربری </button>
+       </div>
+      </div>
+     </div><!-- Slide 3 -->
+     <div class="min-w-full bg-gradient-to-br from-purple-500 to-pink-600 text-white py-20">
+      <div class="mx-auto px-6 text-center max-w-7xl">
+       <div class="text-6xl mb-6">
+        💪
+       </div>
+       <h2 class="text-5xl font-bold mb-6">باشگاه بدنسازی مجهز</h2>
+       <p class="text-xl mb-8 opacity-90">دستگاه‌های مدرن از برندهای معتبر جهانی</p>
+       <div class="flex justify-center space-x-reverse space-x-4"><a href="#services" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 transition-colors"> مشاهده خدمات </a> <button onclick="openLoginModal()" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors"> ورود به پنل کاربری </button>
+       </div>
+      </div>
+     </div><!-- Slide 4 -->
+     <div class="min-w-full bg-gradient-to-br from-orange-500 to-yellow-600 text-white py-20">
+      <div class="mx-auto px-6 text-center max-w-7xl">
+       <div class="text-6xl mb-6">
+        🧘‍♀️
+       </div>
+       <h2 class="text-5xl font-bold mb-6">کلاس‌های یوگا و پیلاتس</h2>
+       <p class="text-xl mb-8 opacity-90">فضای آرام برای تمرینات ذهن و بدن</p>
+       <div class="flex justify-center space-x-reverse space-x-4"><a href="#services" class="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-orange-50 transition-colors"> مشاهده خدمات </a> <button onclick="openLoginModal()" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-orange-600 transition-colors"> ورود به پنل کاربری </button>
+       </div>
+      </div>
+     </div><!-- Slide 5 -->
+     <div class="min-w-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white py-20">
+      <div class="mx-auto px-6 text-center max-w-7xl">
+       <div class="text-6xl mb-6">
+        🏆
+       </div>
+       <h2 class="text-5xl font-bold mb-6">مربیان مجرب و حرفه‌ای</h2>
+       <p class="text-xl mb-8 opacity-90">بیش از 10 مربی با مدارک بین‌المللی</p>
+       <div class="flex justify-center space-x-reverse space-x-4"><a href="#coaches" class="bg-white text-cyan-600 px-8 py-3 rounded-full font-semibold hover:bg-cyan-50 transition-colors"> مشاهده مربیان </a> <button onclick="openLoginModal()" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-cyan-600 transition-colors"> ورود به پنل کاربری </button>
+       </div>
+      </div>
+     </div>
+    </div><!-- Navigation Dots -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-reverse space-x-3 z-10"><button onclick="goToSlide(0)" class="hero-dot w-3 h-3 rounded-full bg-white transition-all duration-300 opacity-100"></button> <button onclick="goToSlide(1)" class="hero-dot w-3 h-3 rounded-full bg-white transition-all duration-300 opacity-50"></button> <button onclick="goToSlide(2)" class="hero-dot w-3 h-3 rounded-full bg-white transition-all duration-300 opacity-50"></button> <button onclick="goToSlide(3)" class="hero-dot w-3 h-3 rounded-full bg-white transition-all duration-300 opacity-50"></button> <button onclick="goToSlide(4)" class="hero-dot w-3 h-3 rounded-full bg-white transition-all duration-300 opacity-50"></button>
+    </div><!-- Navigation Arrows --> <button onclick="prevSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 rounded-full p-3 transition-all z-10">
+     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+     </svg></button> <button onclick="nextSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 rounded-full p-3 transition-all z-10">
+     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+     </svg></button>
+   </section><!-- Services Section -->
+   <section id="services" class="py-20 bg-gray-50 w-full">
+    <div class="mx-auto px-6 max-w-7xl">
+     <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">خدمات ما</h2><!-- Main Services -->
+     <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-20"><!-- Swimming Pool Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+       <div class="bg-blue-500 p-8 text-center">
+        <div class="text-6xl mb-4 wave-animation">
+         🏊‍♂️
+        </div>
+        <h3 id="pool-title" class="text-2xl font-bold text-white">استخر عمومی آرتیمان</h3>
+       </div>
+       <div class="p-8">
+        <p id="pool-description" class="text-gray-600 mb-6 leading-relaxed">استخر مدرن با آب گرم و سرد، مناسب برای تمام سنین. امکانات کامل شامل رختکن، دوش و سونا</p>
+        <div class="space-y-3">
+         <div class="flex items-center space-x-reverse space-x-2"><span class="text-green-500">✓</span> <span class="text-gray-700">استخر 50 متری استاندارد</span>
+         </div>
+         <div class="flex items-center space-x-reverse space-x-2"><span class="text-green-500">✓</span> <span class="text-gray-700">کلاس‌های آموزش شنا</span>
+         </div>
+         <div class="flex items-center space-x-reverse space-x-2"><span class="text-green-500">✓</span> <span class="text-gray-700">سونا و جکوزی</span>
+         </div>
+        </div>
+       </div>
+      </div><!-- Football School Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+       <div class="bg-green-500 p-8 text-center">
+        <div class="text-6xl mb-4 bounce-animation">
+         ⚽
+        </div>
+        <h3 id="football-title" class="text-2xl font-bold text-white">  مدرسه فوتبال آرتیمان </h3>
+       </div>
+       <div class="p-8">
+        <p id="football-description" class="text-gray-600 mb-6 leading-relaxed">آموزش حرفه‌ای فوتبال توسط مربیان باتجربه. مناسب برای کودکان و نوجوانان</p>
+        <div class="space-y-3">
+         <div class="flex items-center space-x-reverse space-x-2"><span class="text-green-500">✓</span> <span class="text-gray-700">زمین چمن و سالن اختصاصی</span>
+         </div>
+         <div class="flex items-center space-x-reverse space-x-2"><span class="text-green-500">✓</span> <span class="text-gray-700">مربیان دارای مدرک</span>
+         </div>
+         <div class="flex items-center space-x-reverse space-x-2"><span class="text-green-500">✓</span> <span class="text-gray-700">برگزاری مسابقات</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Additional Features -->
+     <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="bg-white p-6 rounded-xl shadow text-center card-hover">
+       <div class="text-4xl mb-3">
+        💪
+       </div>
+       <h4 class="font-semibold text-gray-800 mb-2">باشگاه بدنسازی</h4>
+       <p class="text-sm text-gray-600">دستگاه‌های مدرن</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center card-hover">
+       <div class="text-4xl mb-3">
+        🧘‍♀️
+       </div>
+       <h4 class="font-semibold text-gray-800 mb-2">کلاس یوگا</h4>
+       <p class="text-sm text-gray-600">آرامش و تناسب</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center card-hover">
+       <div class="text-4xl mb-3">
+        🏃‍♂️
+       </div>
+       <h4 class="font-semibold text-gray-800 mb-2">پیست دو</h4>
+       <p class="text-sm text-gray-600">دویدن در فضای باز</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center card-hover">
+       <div class="text-4xl mb-3">
+        🍎
+       </div>
+       <h4 class="font-semibold text-gray-800 mb-2">مشاوره تغذیه</h4>
+       <p class="text-sm text-gray-600">برنامه غذایی حرفه‌ای</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Schedule Section -->
+   <section id="schedule" class="py-20 bg-white w-full">
+    <div class="mx-auto px-6 max-w-7xl">
+     <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">سانس‌بندی تفریحی استخر</h2>
+     <div class="max-w-4xl mx-auto mb-12">
+      <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl shadow-lg p-8 text-white text-center mb-8">
+       <p class="text-xl font-bold mb-4">🏊‍♂️ روزهای زوج: ویژه آقایان</p>
+       <p class="text-xl font-bold">🏊‍♀️ روزهای فرد: ویژه خانم‌ها</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+       <table class="w-full">
+        <thead>
+         <tr class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+          <th class="py-4 px-6 text-center font-bold">روز هفته</th>
+          <th class="py-4 px-6 text-center font-bold">سانس اول</th>
+          <th class="py-4 px-6 text-center font-bold">سانس دوم</th>
+          <th class="py-4 px-6 text-center font-bold">سانس سوم</th>
+         </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+         <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
+          <td class="py-4 px-6 text-center font-semibold">
+           <div class="flex items-center justify-center space-x-reverse space-x-2"><span>شنبه</span> <span class="text-2xl">👨</span>
+           </div></td>
+          <td class="py-4 px-6 text-center">8:00 - 10:00</td>
+          <td class="py-4 px-6 text-center">14:00 - 16:00</td>
+          <td class="py-4 px-6 text-center">18:00 - 20:00</td>
+         </tr>
+         <tr class="bg-pink-50 hover:bg-pink-100 transition-colors">
+          <td class="py-4 px-6 text-center font-semibold">
+           <div class="flex items-center justify-center space-x-reverse space-x-2"><span>یکشنبه</span> <span class="text-2xl">👩</span>
+           </div></td>
+          <td class="py-4 px-6 text-center">8:00 - 10:00</td>
+          <td class="py-4 px-6 text-center">14:00 - 16:00</td>
+          <td class="py-4 px-6 text-center">18:00 - 20:00</td>
+         </tr>
+         <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
+          <td class="py-4 px-6 text-center font-semibold">
+           <div class="flex items-center justify-center space-x-reverse space-x-2"><span>دوشنبه</span> <span class="text-2xl">👨</span>
+           </div></td>
+          <td class="py-4 px-6 text-center">8:00 - 10:00</td>
+          <td class="py-4 px-6 text-center">14:00 - 16:00</td>
+          <td class="py-4 px-6 text-center">18:00 - 20:00</td>
+         </tr>
+         <tr class="bg-pink-50 hover:bg-pink-100 transition-colors">
+          <td class="py-4 px-6 text-center font-semibold">
+           <div class="flex items-center justify-center space-x-reverse space-x-2"><span>سه‌شنبه</span> <span class="text-2xl">👩</span>
+           </div></td>
+          <td class="py-4 px-6 text-center">8:00 - 10:00</td>
+          <td class="py-4 px-6 text-center">14:00 - 16:00</td>
+          <td class="py-4 px-6 text-center">18:00 - 20:00</td>
+         </tr>
+         <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
+          <td class="py-4 px-6 text-center font-semibold">
+           <div class="flex items-center justify-center space-x-reverse space-x-2"><span>چهارشنبه</span> <span class="text-2xl">👨</span>
+           </div></td>
+          <td class="py-4 px-6 text-center">8:00 - 10:00</td>
+          <td class="py-4 px-6 text-center">14:00 - 16:00</td>
+          <td class="py-4 px-6 text-center">18:00 - 20:00</td>
+         </tr>
+         <tr class="bg-pink-50 hover:bg-pink-100 transition-colors">
+          <td class="py-4 px-6 text-center font-semibold">
+           <div class="flex items-center justify-center space-x-reverse space-x-2"><span>پنجشنبه</span> <span class="text-2xl">👩</span>
+           </div></td>
+          <td class="py-4 px-6 text-center">8:00 - 10:00</td>
+          <td class="py-4 px-6 text-center">14:00 - 16:00</td>
+          <td class="py-4 px-6 text-center">18:00 - 20:00</td>
+         </tr>
+         <tr class="bg-green-50 hover:bg-green-100 transition-colors">
+          <td class="py-4 px-6 text-center font-semibold">
+           <div class="flex items-center justify-center space-x-reverse space-x-2"><span>جمعه</span> <span class="text-2xl">👨👩</span>
+           </div></td>
+          <td class="py-4 px-6 text-center">
+           <div class="text-sm">
+            <p class="text-blue-600 font-semibold">آقایان: 8:00 - 12:00</p>
+            <p class="text-pink-600 font-semibold">خانم‌ها: 14:00 - 18:00</p>
+           </div></td>
+          <td class="py-4 px-6 text-center" colspan="2"><span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">سانس‌های ویژه تعطیلات</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="mt-8 bg-blue-50 border-r-4 border-blue-500 p-6 rounded-lg">
+       <h3 class="font-bold text-gray-800 mb-3 flex items-center space-x-reverse space-x-2"><span class="text-xl">ℹ️</span> <span>نکات مهم:</span></h3>
+       <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start space-x-reverse space-x-2"><span class="text-green-500 font-bold">•</span> <span>ظرفیت هر سانس: 150 نفر</span></li>
+        <li class="flex items-start space-x-reverse space-x-2"><span class="text-green-500 font-bold">•</span> <span>رزرو قبلی الزامی است</span></li>
+        <li class="flex items-start space-x-reverse space-x-2"><span class="text-green-500 font-bold">•</span> <span>لطفاً 15 دقیقه قبل از شروع سانس حضور داشته باشید</span></li>
+        <li class="flex items-start space-x-reverse space-x-2"><span class="text-green-500 font-bold">•</span> <span>داشتن کلاه شنا و لباس شنای مناسب الزامی است</span></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section><!-- Gallery Section -->
+   <section id="gallery" class="py-20 bg-gray-50 w-full">
+    <div class="mx-auto px-6 max-w-7xl">
+     <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">گالری تصاویر</h2><!-- Gallery Tabs -->
+     <div class="flex justify-center mb-12 flex-wrap gap-3"><button onclick="filterGallery('all')" class="gallery-tab active-tab px-6 py-3 rounded-full font-semibold transition-all"> همه تصاویر </button> <button onclick="filterGallery('pool')" class="gallery-tab px-6 py-3 rounded-full font-semibold transition-all"> 🏊‍♂️ استخر </button> <button onclick="filterGallery('football')" class="gallery-tab px-6 py-3 rounded-full font-semibold transition-all"> ⚽ فوتبال </button> <button onclick="filterGallery('gym')" class="gallery-tab px-6 py-3 rounded-full font-semibold transition-all"> 💪 بدنسازی </button> <button onclick="filterGallery('yoga')" class="gallery-tab px-6 py-3 rounded-full font-semibold transition-all"> 🧘 یوگا </button> <button onclick="filterGallery('facilities')" class="gallery-tab px-6 py-3 rounded-full font-semibold transition-all"> 🏢 امکانات </button>
+     </div>
+     <!-- Gallery Grid -->
+     <div id="galleryGrid" class="grid md:grid-cols-3 gap-6"><!-- Pool Images -->
+      <div class="gallery-item pool cursor-pointer" data-category="pool" onclick="openModal('🏊‍♀️', 'استخر اصلی 25 متری', 'استخر استاندارد 25 متری با آب گرم و سیستم تصفیه پیشرفته')">
+       <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🏊‍♀️
+        </div>
+        <p class="font-semibold relative z-10">استخر اصلی 25 متری</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item pool cursor-pointer" data-category="pool" onclick="openModal('🏊', 'استخر کودکان', 'استخر اختصاصی کودکان با عمق کم و امکانات ایمنی کامل')">
+       <div class="bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🏊
+        </div>
+        <p class="font-semibold relative z-10">استخر کودکان</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item pool cursor-pointer" data-category="pool" onclick="openModal('💆', 'جکوزی و سونا', 'جکوزی مدرن و سونای خشک برای استراحت بعد از شنا')">
+       <div class="bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         💆
+        </div>
+        <p class="font-semibold relative z-10">جکوزی و سونا</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div><!-- Football Images -->
+      <div class="gallery-item football cursor-pointer" data-category="football" onclick="openModal('⚽', 'زمین چمن مصنوعی', 'زمین فوتبال با چمن مصنوعی نسل جدید و استاندارد فیفا')">
+       <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         ⚽
+        </div>
+        <p class="font-semibold relative z-10">زمین چمن مصنوعی</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item football cursor-pointer" data-category="football" onclick="openModal('🥅', 'تمرینات آکادمی', 'کلاس‌های آموزشی فوتبال برای تمام سنین')">
+       <div class="bg-gradient-to-br from-lime-400 to-lime-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🥅
+        </div>
+        <p class="font-semibold relative z-10">تمرینات آکادمی</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item football cursor-pointer" data-category="football" onclick="openModal('🏟️', 'سالن فوتسال', 'سالن سرپوشیده فوتسال با کفپوش استاندارد')">
+       <div class="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🏟️
+        </div>
+        <p class="font-semibold relative z-10">سالن فوتسال</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div><!-- Gym Images -->
+      <div class="gallery-item gym cursor-pointer" data-category="gym" onclick="openModal('🏋️‍♂️', 'سالن بدنسازی', 'دستگاه‌های مدرن بدنسازی از برندهای معتبر جهانی')">
+       <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🏋️‍♂️
+        </div>
+        <p class="font-semibold relative z-10">سالن بدنسازی</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item gym cursor-pointer" data-category="gym" onclick="openModal('💪', 'وزنه آزاد', 'بخش وزنه آزاد با تجهیزات کامل')">
+       <div class="bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         💪
+        </div>
+        <p class="font-semibold relative z-10">وزنه آزاد</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item gym cursor-pointer" data-category="gym" onclick="openModal('🤸', 'تمرینات کاردیو', 'دستگاه‌های تردمیل، دوچرخه و روئینگ')">
+       <div class="bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🤸
+        </div>
+        <p class="font-semibold relative z-10">تمرینات کاردیو</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div><!-- Yoga Images -->
+      <div class="gallery-item yoga cursor-pointer" data-category="yoga" onclick="openModal('🧘', 'سالن یوگا', 'فضای آرام و دلنشین برای تمرینات یوگا')">
+       <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🧘
+        </div>
+        <p class="font-semibold relative z-10">سالن یوگا</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item yoga cursor-pointer" data-category="yoga" onclick="openModal('🧘‍♀️', 'کلاس پیلاتس', 'تمرینات پیلاتس با ابزار تخصصی')">
+       <div class="bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🧘‍♀️
+        </div>
+        <p class="font-semibold relative z-10">کلاس پیلاتس</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item yoga cursor-pointer" data-category="yoga" onclick="openModal('🕉️', 'مدیتیشن', 'فضای مخصوص مدیتیشن و تمرکز')">
+       <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🕉️
+        </div>
+        <p class="font-semibold relative z-10">مدیتیشن</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div><!-- Facilities Images -->
+      <div class="gallery-item facilities cursor-pointer" data-category="facilities" onclick="openModal('🚿', 'رختکن و دوش', 'رختکن‌های مدرن با امکانات کامل')">
+       <div class="bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🚿
+        </div>
+        <p class="font-semibold relative z-10">رختکن و دوش</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item facilities cursor-pointer" data-category="facilities" onclick="openModal('☕', 'کافی شاپ', 'کافی شاپ مدرن با نوشیدنی‌های سالم')">
+       <div class="bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         ☕
+        </div>
+        <p class="font-semibold relative z-10">کافی شاپ</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+      <div class="gallery-item facilities cursor-pointer" data-category="facilities" onclick="openModal('🏆', 'جوایز و افتخارات', 'افتخارات و جوایز دریافتی مجموعه')">
+       <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl p-12 text-center text-white card-hover relative overflow-hidden group">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        <div class="text-6xl mb-4 relative z-10 transform group-hover:scale-110 transition-transform">
+         🏆
+        </div>
+        <p class="font-semibold relative z-10">جوایز و افتخارات</p>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-sm">کلیک برای مشاهده</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50 p-4" onclick="closeModal()">
+     <div class="bg-white rounded-2xl max-w-3xl w-full p-8 relative" onclick="event.stopPropagation()"><button onclick="closeModal()" class="absolute top-4 left-4 text-gray-500 hover:text-gray-700 text-3xl font-bold">×</button>
+      <div class="text-center">
+       <div id="modalIcon" class="text-9xl mb-6"></div>
+       <h3 id="modalTitle" class="text-3xl font-bold text-gray-800 mb-4"></h3>
+       <p id="modalDescription" class="text-gray-600 text-lg leading-relaxed"></p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Coaches Section -->
+  <section id="coaches" class="py-20 bg-gray-50 w-full">
+    <div class="mx-auto px-6 max-w-7xl">
+     <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">مربیان ما</h2>
+     <div class="relative max-w-6xl mx-auto"><!-- Carousel Container -->
+      <div class="overflow-hidden rounded-2xl">
+       <div id="coachesCarousel" class="flex transition-transform duration-500 ease-in-out"><!-- Page 1 - Coaches 1-5 -->
+        <div class="min-w-full grid grid-cols-5 gap-4 px-4">
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👨‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">احمد محمدی</h3>
+          <p class="text-blue-600 font-bold text-sm mb-3">مربی شنا</p>
+          <p class="text-gray-600 text-xs leading-relaxed">15 سال سابقه<br>
+           مدرک بین‌المللی<br>
+           قهرمان کشور</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👨‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">رضا کریمی</h3>
+          <p class="text-green-600 font-bold text-sm mb-3">مربی فوتبال</p>
+          <p class="text-gray-600 text-xs leading-relaxed">مدرک AFC<br>
+           تجربه لیگ برتر<br>
+           مربی تیم ملی</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👩‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">مریم احمدی</h3>
+          <p class="text-purple-600 font-bold text-sm mb-3">مربی یوگا</p>
+          <p class="text-gray-600 text-xs leading-relaxed">مدرک بین‌المللی<br>
+           10 سال تجربه<br>
+           یوگای درمانی</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👨‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">علی رضایی</h3>
+          <p class="text-orange-600 font-bold text-sm mb-3">مربی بدنسازی</p>
+          <p class="text-gray-600 text-xs leading-relaxed">مدرک ISSA<br>
+           12 سال سابقه<br>
+           تغذیه ورزشی</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👩‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">زهرا حسینی</h3>
+          <p class="text-pink-600 font-bold text-sm mb-3">مربی پیلاتس</p>
+          <p class="text-gray-600 text-xs leading-relaxed">مدرک PMA<br>
+           8 سال تجربه<br>
+           تمرینات اصلاحی</p>
+         </div>
+        </div><!-- Page 2 - Coaches 6-10 -->
+        <div class="min-w-full grid grid-cols-5 gap-4 px-4">
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👨‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">حسین نوری</h3>
+          <p class="text-red-600 font-bold text-sm mb-3">مربی بوکس</p>
+          <p class="text-gray-600 text-xs leading-relaxed">قهرمان کشور<br>
+           مدرک AIBA<br>
+           آمادگی رزمی</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👩‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">فاطمه کاظمی</h3>
+          <p class="text-teal-600 font-bold text-sm mb-3">مربی ایروبیک</p>
+          <p class="text-gray-600 text-xs leading-relaxed">مدرک AFAA<br>
+           7 سال سابقه<br>
+           زومبا و رقص</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👨‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">محمد صادقی</h3>
+          <p class="text-indigo-600 font-bold text-sm mb-3">مربی تکواندو</p>
+          <p class="text-gray-600 text-xs leading-relaxed">کمربند مشکی<br>
+           مدرک کوکیون<br>
+           مربی تیم ملی</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👩‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">سارا امینی</h3>
+          <p class="text-yellow-600 font-bold text-sm mb-3">مربی شنای کودکان</p>
+          <p class="text-gray-600 text-xs leading-relaxed">مدرک ASA<br>
+           9 سال تجربه<br>
+           آموزش کودک محور</p>
+         </div>
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-xl">
+           👨‍🏫
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">امیر حسن‌زاده</h3>
+          <p class="text-cyan-600 font-bold text-sm mb-3">مربی کراس فیت</p>
+          <p class="text-gray-600 text-xs leading-relaxed">مدرک CF-L2<br>
+           6 سال سابقه<br>
+           تمرینات عملکردی</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Navigation Dots -->
+      <div class="flex justify-center mt-8 space-x-reverse space-x-3"><button onclick="goToCoach(0)" class="coach-dot w-3 h-3 rounded-full bg-blue-500 transition-all duration-300"></button> <button onclick="goToCoach(1)" class="coach-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></button>
+      </div><!-- Navigation Arrows --> <button onclick="prevCoach()" class="absolute right-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors z-10">
+       <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+       </svg></button> <button onclick="nextCoach()" class="absolute left-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors z-10">
+       <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+       </svg></button>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-20 bg-white w-full">
+    <div class="mx-auto px-6 max-w-7xl">
+     <h2 id="contact-title" class="text-4xl font-bold text-center text-gray-800 mb-16">تماس با ما</h2>
+     <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto"><!-- Contact Form -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+       <h3 class="text-2xl font-bold text-gray-800 mb-6">فرم تماس</h3>
+       <form id="contactForm" class="space-y-4">
+        <div><label for="name" class="block text-gray-700 font-semibold mb-2">نام و نام خانوادگی</label> <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+        </div>
+        <div><label for="email" class="block text-gray-700 font-semibold mb-2">ایمیل</label> <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+        </div>
+        <div><label for="phone" class="block text-gray-700 font-semibold mb-2">تلفن</label> <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+        </div>
+        <div><label for="service" class="block text-gray-700 font-semibold mb-2">خدمت مورد نظر</label> <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required> <option value="">انتخاب کنید</option> <option value="pool">استخر</option> <option value="football">فوتبال</option> <option value="gym">بدنسازی</option> <option value="yoga">یوگا</option> <option value="other">سایر</option> </select>
+        </div>
+        <div><label for="message" class="block text-gray-700 font-semibold mb-2">پیام</label> <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required></textarea>
+        </div><button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all"> ارسال پیام </button>
+       </form>
+      </div><!-- Contact Info -->
+      <div>
+       <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg p-8 text-white mb-6">
+        <h3 class="text-2xl font-bold mb-6">اطلاعات تماس</h3>
+        <div class="space-y-4">
+         <div class="flex items-start space-x-reverse space-x-3"><span class="text-2xl">📍</span>
+          <div>
+           <p class="font-semibold">آدرس</p>
+           <p class="opacity-90">خمین فیروزاباد مجتمع کارگران</p>
+          </div>
+         </div>
+         <div class="flex items-start space-x-reverse space-x-3"><span class="text-2xl">📞</span>
+          <div>
+           <p class="font-semibold">تلفن</p>
+           <p class="opacity-90">08646223233</p>
+          </div>
+         </div>
+         <div class="flex items-start space-x-reverse space-x-3"><span class="text-2xl">✉️</span>
+          <div>
+           <p class="font-semibold">ایمیل</p>
+           <p class="opacity-90">info@aquasport.ir</p>
+          </div>
+         </div>
+         <div class="flex items-start space-x-reverse space-x-3"><span class="text-2xl">⏰</span>
+          <div>
+           <p class="font-semibold">ساعات کاری</p>
+           <p class="opacity-90">شنبه تا پنجشنبه: 6 صبح - 11 شب</p>
+           <p class="opacity-90">جمعه: 8 صبح - 10 شب</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="bg-gray-100 rounded-xl p-6 text-center">
+        <h4 class="font-bold text-gray-800 mb-3">ما را در شبکه‌های اجتماعی دنبال کنید</h4>
+        <div class="flex justify-center space-x-reverse space-x-4 text-3xl"><a href="#" class="hover:scale-110 transition-transform">📱</a> <a href="#" class="hover:scale-110 transition-transform">💬</a> <a href="#" class="hover:scale-110 transition-transform">✈️</a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main><!-- Footer -->
+  <footer class="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-12 w-full">
+   <div class="mx-auto px-6 max-w-7xl">
+    <div class="grid md:grid-cols-4 gap-8 mb-8"><!-- About Section -->
+     <div>
+      <h3 class="text-xl font-bold mb-4 text-blue-400">درباره ما</h3>
+      <p id="footer-about" class="text-gray-300 text-sm leading-relaxed">مجتمع ورزشی آرتیمان با بیش از 10 سال سابقه، ارائه‌دهنده بهترین خدمات ورزشی در سطح شهر</p>
+     </div><!-- Quick Links -->
+     <div>
+      <h3 class="text-xl font-bold mb-4 text-blue-400">دسترسی سریع</h3>
+      <ul class="space-y-2 text-sm">
+       <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors">خانه</a></li>
+       <li><a href="#services" class="text-gray-300 hover:text-blue-400 transition-colors">خدمات</a></li>
+       <li><a href="#schedule" class="text-gray-300 hover:text-blue-400 transition-colors">سانس‌بندی</a></li>
+       <li><a href="#coaches" class="text-gray-300 hover:text-blue-400 transition-colors">مربیان</a></li>
+       <li><a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors">تماس با ما</a></li>
+      </ul>
+     </div><!-- Contact Info -->
+     <div>
+      <h3 class="text-xl font-bold mb-4 text-blue-400">تماس با ما</h3>
+      <ul class="space-y-3 text-sm">
+       <li class="flex items-center space-x-reverse space-x-2 text-gray-300"><span>📞</span> <span id="footer-phone">08646223232</span></li>
+       <li class="flex items-center space-x-reverse space-x-2 text-gray-300"><span>✉️</span> <span id="footer-email">info@aquasport.ir</span></li>
+       <li class="flex items-start space-x-reverse space-x-2 text-gray-300"><span>📍</span> <span id="footer-address">خمین فیروز اباد مجتمع کارگران</span></li>
+      </ul>
+     </div><!-- Social Media -->
+     <div>
+      <h3 class="text-xl font-bold mb-4 text-blue-400">شبکه‌های اجتماعی</h3>
+      <p class="text-gray-300 text-sm mb-4">ما را دنبال کنید</p>
+      <div class="space-y-3"><a href="https://instagram.com/aquasport" target="_blank" rel="noopener noreferrer" id="instagram-link" class="flex items-center space-x-reverse space-x-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg p-3 transition-all transform hover:scale-105"> <span class="text-2xl">📷</span>
+        <div class="text-right">
+         <p class="font-semibold">اینستاگرام</p>
+         <p class="text-xs opacity-90" id="instagram-username">@aquasport</p>
+        </div></a> <a href="https://eitaa.com/aquasport" target="_blank" rel="noopener noreferrer" id="eitaa-link" class="flex items-center space-x-reverse space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg p-3 transition-all transform hover:scale-105"> <span class="text-2xl">💬</span>
+        <div class="text-right">
+         <p class="font-semibold">ایتا</p>
+         <p class="text-xs opacity-90" id="eitaa-username">@aquasport</p>
+        </div></a> <a href="https://t.me/aquasport" target="_blank" rel="noopener noreferrer" id="telegram-link" class="flex items-center space-x-reverse space-x-3 bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 rounded-lg p-3 transition-all transform hover:scale-105"> <span class="text-2xl">✈️</span>
+        <div class="text-right">
+         <p class="font-semibold">تلگرام</p>
+         <p class="text-xs opacity-90" id="telegram-username">@aquasport</p>
+        </div></a>
+      </div>
+     </div>
+    </div><!-- Bottom Bar -->
+    <div class="border-t border-gray-700 pt-6 text-center">
+     <p id="footer-text" class="text-gray-300 mb-2">© 2026 مجتمع ورزشی آرتیمان تمامی حقوق محفوظ است.</p>
+     <p class="text-gray-400 text-sm">ساخته شده با ❤️ برای ورزشکاران</p>
+    </div>
+   </div>
+  </footer><!-- Login Modal -->
+  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4" onclick="closeLoginModal(event)">
+   <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl" onclick="event.stopPropagation()">
+    <div class="text-center mb-8">
+     <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl text-white shadow-lg">
+      🔐
+     </div>
+     <h2 class="text-3xl font-bold text-gray-800 mb-2">ورود به پنل کاربری</h2>
+     <p class="text-gray-600">لطفاً اطلاعات خود را وارد کنید</p>
+    </div>
+    <form id="loginForm" class="space-y-4">
+     <div><label for="loginPhone" class="block text-gray-700 font-semibold mb-2">شماره موبایل</label> <input type="tel" id="loginPhone" placeholder="09123456789" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-left" required>
+     </div>
+     <div><label for="loginPassword" class="block text-gray-700 font-semibold mb-2">رمز عبور</label>
+      <div class="relative"><input type="password" id="loginPassword" placeholder="رمز عبور خود را وارد کنید" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required> <button type="button" onclick="togglePassword()" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"> <span id="eyeIcon">👁️</span> </button>
+      </div>
+     </div>
+     <div class="bg-blue-50 border-r-4 border-blue-500 p-4 rounded text-sm">
+      <p class="text-gray-700 mb-2"><strong>اطلاعات ورود پیش‌فرض:</strong></p>
+      <p class="text-gray-600 mb-1">📱 شماره: <span class="font-mono">09123456789</span></p>
+      <p class="text-gray-600">🔑 رمز: <span class="font-mono">1234</span></p>
+     </div><button type="submit" id="loginBtn" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all"> ورود به پنل </button> <button type="button" onclick="closeLoginModal()" class="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all"> انصراف </button>
+    </form>
+   </div>
+  </div>
+  
+ <script>
+        const defaultConfig = {
+            background_color: "#667eea",
+            secondary_color: "#764ba2",
+            text_color: "#1f2937",
+            primary_action_color: "#3b82f6",
+            secondary_action_color: "#10b981",
+            font_family: "Vazirmatn",
+            font_size: 16,
+            site_title: "مجتمع ورزشی آکوا اسپورت",
+            hero_title: "بهترین مجتمع ورزشی شهر",
+            hero_subtitle: "با امکانات مدرن استخر و مدرسه فوتبال حرفه‌ای",
+            pool_title: "استخر عمومی",
+            pool_description: "استخر مدرن با آب گرم و سرد، مناسب برای تمام سنین. امکانات کامل شامل رختکن، دوش و سونا",
+            football_title: "مدرسه فوتبال",
+            football_description: "آموزش حرفه‌ای فوتبال توسط مربیان باتجربه. مناسب برای کودکان و نوجوانان",
+            contact_title: "تماس با ما",
+            footer_text: "© 2024 مجتمع ورزشی آکوا اسپورت. تمامی حقوق محفوظ است.",
+            footer_about: "مجتمع ورزشی آکوا اسپورت با بیش از 10 سال سابقه، ارائه‌دهنده بهترین خدمات ورزشی در سطح شهر",
+            footer_phone: "021-12345678",
+            footer_email: "info@aquasport.ir",
+            footer_address: "تهران، خیابان ولیعصر، پلاک 123",
+            instagram_username: "@aquasport",
+            instagram_link: "https://instagram.com/aquasport",
+            eitaa_username: "@aquasport",
+            eitaa_link: "https://eitaa.com/aquasport",
+            telegram_username: "@aquasport",
+            telegram_link: "https://t.me/aquasport"
+        };
+
+        let allRecords = [];
+        let selectedPackageData = null;
+        let isLoggedIn = false;
+        let currentUser = '';
+
+        async function onConfigChange(config) {
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            const baseFontStack = 'system-ui, sans-serif';
+            
+            // Apply colors
+            const headers = document.querySelectorAll('header, .hero-gradient');
+            headers.forEach(header => {
+                header.style.background = `linear-gradient(135deg, ${config.background_color || defaultConfig.background_color} 0%, ${config.secondary_color || defaultConfig.secondary_color} 100%)`;
+            });
+
+            // Apply text content
+            document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
+            document.getElementById('pool-title').textContent = config.pool_title || defaultConfig.pool_title;
+            document.getElementById('pool-description').textContent = config.pool_description || defaultConfig.pool_description;
+            document.getElementById('football-title').textContent = config.football_title || defaultConfig.football_title;
+            document.getElementById('football-description').textContent = config.football_description || defaultConfig.football_description;
+            document.getElementById('contact-title').textContent = config.contact_title || defaultConfig.contact_title;
+            document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+            
+            // Footer content
+            document.getElementById('footer-about').textContent = config.footer_about || defaultConfig.footer_about;
+            document.getElementById('footer-phone').textContent = config.footer_phone || defaultConfig.footer_phone;
+            document.getElementById('footer-email').textContent = config.footer_email || defaultConfig.footer_email;
+            document.getElementById('footer-address').textContent = config.footer_address || defaultConfig.footer_address;
+            document.getElementById('instagram-username').textContent = config.instagram_username || defaultConfig.instagram_username;
+            document.getElementById('instagram-link').href = config.instagram_link || defaultConfig.instagram_link;
+            document.getElementById('eitaa-username').textContent = config.eitaa_username || defaultConfig.eitaa_username;
+            document.getElementById('eitaa-link').href = config.eitaa_link || defaultConfig.eitaa_link;
+            document.getElementById('telegram-username').textContent = config.telegram_username || defaultConfig.telegram_username;
+            document.getElementById('telegram-link').href = config.telegram_link || defaultConfig.telegram_link;
+
+            // Apply font
+            document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+            // Apply font sizes
+            document.getElementById('site-title').style.fontSize = `${baseSize * 1.5}px`;
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.background = type === 'success' ? '#10b981' : '#ef4444';
+            toast.textContent = message;
+            document.getElementById('toastContainer').appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        const dataHandler = {
+            onDataChanged(data) {
+                allRecords = data;
+                renderMySessions();
+            }
+        };
+
+        // Login Functions
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('loginModal').classList.add('flex');
+        }
+
+        function closeLoginModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('loginModal').classList.add('hidden');
+            document.getElementById('loginModal').classList.remove('flex');
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('loginPassword');
+            const eyeIcon = document.getElementById('eyeIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.textContent = '👁️';
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const phone = document.getElementById('loginPhone').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Simple validation - you can customize this
+            if (phone === '09123456789' && password === '1234') {
+                isLoggedIn = true;
+                currentUser = phone;
+                document.getElementById('loggedInUser').textContent = phone;
+                
+                closeLoginModal();
+                openUserPanel();
+                showToast('ورود موفقیت‌آمیز بود!');
+            } else {
+                showToast('شماره موبایل یا رمز عبور اشتباه است', 'error');
+            }
+        });
+
+        function logoutUser() {
+            isLoggedIn = false;
+            currentUser = '';
+            closeUserPanel();
+            showToast('خروج انجام شد');
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'در حال ارسال...';
+            submitBtn.disabled = true;
+
+            const formData = {
+                id: Date.now().toString(),
+                type: 'contact',
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value,
+                createdAt: new Date().toISOString()
+            };
+
+            if (allRecords.length >= 999) {
+                showToast('حداکثر تعداد رکوردها به 999 رسیده است', 'error');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            const result = await window.dataSdk.create(formData);
+            
+            if (result.isOk) {
+                showToast('پیام شما با موفقیت ارسال شد!');
+                document.getElementById('contactForm').reset();
+            } else {
+                showToast('خطا در ارسال پیام. لطفا دوباره تلاش کنید', 'error');
+            }
+
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
+
+        // User Panel Functions
+        function openUserPanel() {
+            if (!isLoggedIn) {
+                openLoginModal();
+                return;
+            }
+            
+            document.getElementById('userPanel').classList.remove('hidden');
+            document.getElementById('userPanel').classList.add('flex');
+            renderMySessions();
+        }
+
+        function closeUserPanel(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('userPanel').classList.add('hidden');
+            document.getElementById('userPanel').classList.remove('flex');
+        }
+
+        function switchPanelTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.panel-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.user-panel-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            const tabs = {
+                'packages': 'packagesTab',
+                'mySessions': 'mySessionsTab',
+                'viewSchedule': 'viewScheduleTab',
+                'register': 'registerTab'
+            };
+            
+            document.getElementById(tabs[tabName]).classList.remove('hidden');
+            event.target.closest('.user-panel-tab').classList.add('active');
+        }
+
+        function selectPackage(type, count, price) {
+            const names = {
+                'single': 'جلسه تکی',
+                'five': '5 جلسه',
+                'ten': '10 جلسه'
+            };
+
+            selectedPackageData = { type, count, price, name: names[type] };
+
+            // Clear previous selection
+            document.querySelectorAll('.package-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Mark selected
+            event.currentTarget.classList.add('selected');
+
+            // Show purchase form
+            document.getElementById('purchaseForm').classList.remove('hidden');
+            document.getElementById('selectedPackageName').textContent = names[type];
+            document.getElementById('selectedSessionCount').textContent = `${count} جلسه`;
+            document.getElementById('selectedPrice').textContent = `${price.toLocaleString()} تومان`;
+
+            // Scroll to form
+            document.getElementById('purchaseForm').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function cancelPurchase() {
+            document.getElementById('purchaseForm').classList.add('hidden');
+             document.querySelectorAll('.package-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            selectedPackageData = null;
+        }
+
+        // Buy Package Form
+        document.getElementById('buyPackageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!selectedPackageData) {
+                showToast('لطفاً ابتدا یک بسته انتخاب کنید', 'error');
+                return;
+            }
+
+            const buyBtn = document.getElementById('buyBtn');
+            const originalText = buyBtn.textContent;
+            buyBtn.textContent = 'در حال پردازش...';
+            buyBtn.disabled = true;
+
+            const purchaseData = {
+                id: Date.now().toString(),
+                type: 'purchase',
+                name: document.getElementById('buyName').value,
+                phone: document.getElementById('buyPhone').value,
+                email: document.getElementById('buyEmail').value,
+                packageType: selectedPackageData.type,
+                sessionCount: selectedPackageData.count,
+                totalPrice: selectedPackageData.price,
+                usedSessions: 0,
+                createdAt: new Date().toISOString()
+            };
+
+            if (allRecords.length >= 999) {
+                showToast('حداکثر تعداد رکوردها به 999 رسیده است', 'error');
+                buyBtn.textContent = originalText;
+                buyBtn.disabled = false;
+                return;
+            }
+
+            const result = await window.dataSdk.create(purchaseData);
+            
+            if (result.isOk) {
+                showToast('خرید شما با موفقیت ثبت شد!');
+                document.getElementById('buyPackageForm').reset();
+                cancelPurchase();
+                switchPanelTab('mySessions');
+            } else {
+                showToast('خطا در ثبت خرید. لطفا دوباره تلاش کنید', 'error');
+            }
+
+            buyBtn.textContent = originalText;
+            buyBtn.disabled = false;
+        });
+
+        // Class Registration Form
+        document.getElementById('classRegisterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const registerBtn = document.getElementById('registerBtn');
+            const originalText = registerBtn.textContent;
+            registerBtn.textContent = 'در حال ثبت...';
+            registerBtn.disabled = true;
+
+            const registrationData = {
+                id: Date.now().toString(),
+                type: 'class_registration',
+                name: document.getElementById('regName').value,
+                phone: document.getElementById('regPhone').value,
+                email: document.getElementById('regEmail').value,
+                classType: document.getElementById('classType').value,
+                level: document.getElementById('level').value,
+                preferredDay: document.getElementById('preferredDay').value,
+                preferredTime: document.getElementById('preferredTime').value,
+                createdAt: new Date().toISOString()
+            };
+
+            if (allRecords.length >= 999) {
+                showToast('حداکثر تعداد رکوردها به 999 رسیده است', 'error');
+                registerBtn.textContent = originalText;
+                registerBtn.disabled = false;
+                return;
+            }
+
+            const result = await window.dataSdk.create(registrationData);
+            
+            if (result.isOk) {
+                showToast('ثبت‌نام شما با موفقیت انجام شد! به زودی با شما تماس خواهیم گرفت.');
+                document.getElementById('classRegisterForm').reset();
+            } else {
+                showToast('خطا در ثبت‌نام. لطفا دوباره تلاش کنید', 'error');
+            }
+
+            registerBtn.textContent = originalText;
+            registerBtn.disabled = false;
+        });
+
+        function renderMySessions() {
+            const container = document.getElementById('mySessionsList');
+            const purchases = allRecords.filter(r => r.type === 'purchase');
+
+            if (purchases.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="text-6xl mb-4">📭</div>
+                        <p class="text-gray-500 text-lg">هنوز جلسه‌ای خریداری نکرده‌اید</p>
+                        <button onclick="switchPanelTab('packages')" class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            خرید جلسات
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = purchases.map(purchase => {
+                const remaining = purchase.sessionCount - purchase.usedSessions;
+                const percentage = (remaining / purchase.sessionCount) * 100;
+                const statusClass = percentage > 50 ? 'badge-success' : percentage > 20 ? 'badge-warning' : 'badge-info';
+                
+                return `
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-gray-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-800">${getPackageName(purchase.packageType)}</h4>
+                                <p class="text-sm text-gray-500">تاریخ خرید: ${new Date(purchase.createdAt).toLocaleDateString('fa-IR')}</p>
+                            </div>
+                            <span class="badge ${statusClass}">${remaining} جلسه باقی‌مانده</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>پیشرفت استفاده</span>
+                                <span>${purchase.usedSessions} از ${purchase.sessionCount}</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all" style="width: ${(purchase.usedSessions / purchase.sessionCount) * 100}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-3 text-center text-sm">
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <p class="text-gray-600 mb-1">کل جلسات</p>
+                                <p class="text-xl font-bold text-blue-600">${purchase.sessionCount}</p>
+                            </div>
+                            <div class="bg-green-50 rounded-lg p-3">
+                                <p class="text-gray-600 mb-1">استفاده شده</p>
+                                <p class="text-xl font-bold text-green-600">${purchase.usedSessions}</p>
+                            </div>
+                            <div class="bg-purple-50 rounded-lg p-3">
+                                <p class="text-gray-600 mb-1">باقی‌مانده</p>
+                                <p class="text-xl font-bold text-purple-600">${remaining}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
+                            <p class="text-sm text-gray-600">مبلغ پرداختی: <span class="font-bold text-gray-800">${purchase.totalPrice.toLocaleString()} تومان</span></p>
+                            ${remaining > 0 ? `<button onclick="useSession('${purchase.__backendId}')" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition-colors">استفاده از جلسه</button>` : '<span class="text-red-500 font-semibold text-sm">تمام شده</span>'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function useSession(backendId) {
+            const purchase = allRecords.find(r => r.__backendId === backendId);
+            if (!purchase) return;
+
+            if (purchase.usedSessions >= purchase.sessionCount) {
+                showToast('جلسات این بسته تمام شده است', 'error');
+                return;
+            }
+
+            const updatedPurchase = {
+                ...purchase,
+                usedSessions: purchase.usedSessions + 1
+            };
+
+            const result = await window.dataSdk.update(updatedPurchase);
+            
+            if (result.isOk) {
+                showToast('یک جلسه استفاده شد');
+            } else {
+                showToast('خطا در ثبت استفاده. لطفا دوباره تلاش کنید', 'error');
+            }
+        }
+
+        function getPackageName(type) {
+            const names = {
+                'single': 'جلسه تکی',
+                'five': 'بسته 5 جلسه',
+                'ten': 'بسته 10 جلسه'
+            };
+            return names[type] || 'نامشخص';
+        }
+
+        // Hero Carousel Functions
+        let currentSlideIndex = 0;
+        const totalSlides = 5;
+        let heroAutoPlayInterval;
+
+        function updateHeroCarousel() {
+            const carousel = document.getElementById('heroCarousel');
+            carousel.style.transform = `translateX(${currentSlideIndex * 100}%)`;
+            
+            const dots = document.querySelectorAll('.hero-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentSlideIndex) {
+                    dot.style.opacity = '1';
+                    dot.style.width = '32px';
+                } else {
+                    dot.style.opacity = '0.5';
+                    dot.style.width = '12px';
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            updateHeroCarousel();
+            resetHeroAutoPlay();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+            updateHeroCarousel();
+            resetHeroAutoPlay();
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateHeroCarousel();
+            resetHeroAutoPlay();
+        }
+
+        function startHeroAutoPlay() {
+            heroAutoPlayInterval = setInterval(() => {
+                nextSlide();
+            }, 3000);
+        }
+
+        function resetHeroAutoPlay() {
+            clearInterval(heroAutoPlayInterval);
+            startHeroAutoPlay();
+        }
+
+        // Gallery Functions
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const tabs = document.querySelectorAll('.gallery-tab');
+            
+            tabs.forEach(tab => {
+                tab.classList.remove('active-tab');
+            });
+            event.target.classList.add('active-tab');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.classList.remove('hidden');
+                    item.style.animation = 'fadeIn 0.5s ease-in';
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        function openModal(icon, title, description) {
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalIcon').textContent = icon;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Coaches Carousel
+        let currentCoachIndex = 0;
+        const totalCoaches = 2;
+        let coachAutoPlayInterval;
+
+        function updateCoachCarousel() {
+            const carousel = document.getElementById('coachesCarousel');
+            carousel.style.transform = `translateX(${currentCoachIndex * 100}%)`;
+            
+            const dots = document.querySelectorAll('.coach-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentCoachIndex) {
+                    dot.classList.remove('bg-gray-300', 'w-3', 'h-3');
+                    dot.classList.add('bg-blue-500', 'w-4', 'h-4');
+                } else {
+                    dot.classList.remove('bg-blue-500', 'w-4', 'h-4');
+                    dot.classList.add('bg-gray-300', 'w-3', 'h-3');
+                }
+            });
+        }
+
+        function nextCoach() {
+            currentCoachIndex = (currentCoachIndex + 1) % totalCoaches;
+            updateCoachCarousel();
+            resetCoachAutoPlay();
+        }
+
+        function prevCoach() {
+            currentCoachIndex = (currentCoachIndex - 1 + totalCoaches) % totalCoaches;
+            updateCoachCarousel();
+            resetCoachAutoPlay();
+        }
+
+        function goToCoach(index) {
+            currentCoachIndex = index;
+            updateCoachCarousel();
+            resetCoachAutoPlay();
+        }
+
+        function startCoachAutoPlay() {
+            coachAutoPlayInterval = setInterval(() => {
+                nextCoach();
+            }, 4000);
+        }
+
+        function resetCoachAutoPlay() {
+            clearInterval(coachAutoPlayInterval);
+            startCoachAutoPlay();
+        }
+
+        // Initialize SDKs
+        (async () => {
+            if (window.dataSdk) {
+                const initResult = await window.dataSdk.init(dataHandler);
+                if (!initResult.isOk) {
+                    console.error('Failed to initialize data SDK');
+                }
+            }
+
+            if (window.elementSdk) {
+                await window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities: (config) => ({
+                        recolorables: [
+                            {
+                                get: () => config.background_color || defaultConfig.background_color,
+                                set: (value) => {
+                                    config.background_color = value;
+                                    window.elementSdk.setConfig({ background_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.secondary_color || defaultConfig.secondary_color,
+                                set: (value) => {
+                                    config.secondary_color = value;
+                                    window.elementSdk.setConfig({ secondary_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.text_color || defaultConfig.text_color,
+                                set: (value) => {
+                                    config.text_color = value;
+                                    window.elementSdk.setConfig({ text_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                                set: (value) => {
+                                    config.primary_action_color = value;
+                                    window.elementSdk.setConfig({ primary_action_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                                set: (value) => {
+                                    config.secondary_action_color = value;
+                                    window.elementSdk.setConfig({ secondary_action_color: value });
+                                }
+                            }
+                        ],
+                        borderables: [],
+                        fontEditable: {
+                            get: () => config.font_family || defaultConfig.font_family,
+                            set: (value) => {
+                                config.font_family = value;
+                                window.elementSdk.setConfig({ font_family: value });
+                            }
+                        },
+                        fontSizeable: {
+                            get: () => config.font_size || defaultConfig.font_size,
+                            set: (value) => {
+                                config.font_size = value;
+                                window.elementSdk.setConfig({ font_size: value });
+                            }
+                        }
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["site_title", config.site_title || defaultConfig.site_title],
+                        ["pool_title", config.pool_title || defaultConfig.pool_title],
+                        ["pool_description", config.pool_description || defaultConfig.pool_description],
+                        ["football_title", config.football_title || defaultConfig.football_title],
+                        ["football_description", config.football_description || defaultConfig.football_description],
+                        ["contact_title", config.contact_title || defaultConfig.contact_title],
+                        ["footer_text", config.footer_text || defaultConfig.footer_text],
+                        ["footer_about", config.footer_about || defaultConfig.footer_about],
+                        ["footer_phone", config.footer_phone || defaultConfig.footer_phone],
+                        ["footer_email", config.footer_email || defaultConfig.footer_email],
+                        ["footer_address", config.footer_address || defaultConfig.footer_address],
+                        ["instagram_username", config.instagram_username || defaultConfig.instagram_username],
+                        ["instagram_link", config.instagram_link || defaultConfig.instagram_link],
+                        ["eitaa_username", config.eitaa_username || defaultConfig.eitaa_username],
+                        ["eitaa_link", config.eitaa_link || defaultConfig.eitaa_link],
+                        ["telegram_username", config.telegram_username || defaultConfig.telegram_username],
+                        ["telegram_link", config.telegram_link || defaultConfig.telegram_link]
+                    ])
+                });
+            }
+
+            startHeroAutoPlay();
+            startCoachAutoPlay();
+        })();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a75b67d11f11d43',t:'MTc2NDYyNDkxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
